@@ -1,13 +1,11 @@
+package claseFile;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.PrintWriter;
-
-import javax.swing.JOptionPane;
-
 import java.io.FileNotFoundException;
-
+import java.text.Normalizer;
 
 public class ejerciciosFile {
 
@@ -22,22 +20,23 @@ public class ejerciciosFile {
 	        fr =new FileReader(ruta);
 	        BufferedReader entrada= new BufferedReader(fr);
             File fichero=new File("C:/PruebasFile/resultados.txt");
-	        
-            String  cadena =entrada.readLine();
-	
-               String nuevaCadena= cadena.replace(';', ' ');
-           
-              System.out.println(nuevaCadena);
+	        String  cadena =entrada.readLine();
+            while(cadena!=null) {
+            	           
                
+               String nuevaCadena= cadena.replace(';', ' ');
+            
+               
+              
                String cadenaResul="";
-               int[] notas = new int[6];
-
-               System.out.println(nuevaCadena.length());
-
+               String[] notas = new String[6];
+               int []notasEnteras=new int[6];
+               int suma=0;
+               long media=0;
+             
                cadenaResul=cadenaResul+nuevaCadena.charAt(0);
                cadenaResul=cadenaResul+".";
               
-               System.out.println(cadenaResul);
                int i=1;
                while(nuevaCadena.charAt(i)!=' ' )
                    i++;
@@ -47,27 +46,54 @@ public class ejerciciosFile {
             			i++;   
                }while(nuevaCadena.charAt(i)!=' ');
                
-               System.out.println(cadenaResul+'|');
-               
                int restoCadena=i;
                int x=0;
                //tratar los numeros
                 for(int j=restoCadena ; j<nuevaCadena.length();j++) {
             	 
                 	if(nuevaCadena.charAt(j)!=' ') {
-            		   notas[x]= Integer.valueOf(nuevaCadena.charAt(j));
+            		   notas[x]= String.valueOf(nuevaCadena.charAt(j));
                 	         x++;}
                 }	
-            	   
                
-               for(int k=0;k<notas.length;k++) {
-            	   
-            	   System.out.println(notas[k]);
+               for(i=0;i<notasEnteras.length;i++) {
+            	   notasEnteras[i]=Integer.parseInt(notas[i]);
                }
                
-               
-               
+                for(int k=0;k<notas.length;k++) {
+            	   
+            	      suma=suma+notasEnteras[k];
+            	   
+               }
+                 media=suma/6;
+                 //media=(long) 9.54;
+                
+                 cadenaResul=cadenaResul+"  "+media;
+                 
+                 
+                 if(media<=5)
+                	 cadenaResul=cadenaResul + "  SUSPENSO";
+                 if(media>5 && media<6)
+                	 cadenaResul=cadenaResul + "  SUFICIENTE";
+                 if(media>=6&& media<7)
+                	 cadenaResul=cadenaResul + "  BIEN";
+                 if(media>=7 && media<=8)
+                	 cadenaResul=cadenaResul + "  NOTABLE";
+                 if(media>=8 && media<=10)
+                	 cadenaResul=cadenaResul + "  SOBRESALIENTE";
+                 
+                 System.out.println(cadenaResul);
+                 cadena =entrada.readLine();
+            }
 	}
+	
+
+	
+
+
+	}
+
+
 
 
                
