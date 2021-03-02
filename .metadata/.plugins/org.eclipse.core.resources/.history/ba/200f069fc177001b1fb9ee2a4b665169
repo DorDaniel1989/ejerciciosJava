@@ -1,0 +1,33 @@
+package claseFile;
+
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class ejercicio5Entrega {
+
+	public static void main(String[]args) {
+		
+		ArrayList<String> nombres = new ArrayList<String>();
+	    int	numDeGuiones;	
+	    int tamañoArray;
+		String seguir="";
+		String guiones ="-----------------------------------";
+		
+		
+		do {
+		nombres.add(JOptionPane.showInputDialog("Introduzca un nombre"));
+		
+		}while(!(seguir=="n"||seguir=="N"));
+		 tamañoArray=nombres.size();
+		
+		 
+		 
+		numDeGuiones=guiones.length();
+		System.out.println(tamañoArray);
+		System.out.println(numDeGuiones);
+		System.out.println(guiones);
+		
+		
+	}
+}

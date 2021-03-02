@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\damur\OneDrive\Desktop\proyectos2\ejercicios\.metadata\.plugins\org.eclipse.jdt.core
+1949349757.index
+3869568855.index
